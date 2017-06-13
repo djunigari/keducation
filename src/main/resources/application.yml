@@ -1,8 +1,8 @@
 spring:
   social:
     facebook:
-      appId: 671968559674761
-      appSecret: 07000a1060b7b8688bbf7aeb18623fdb
+      appId: 477872509238452
+      appSecret: a24adf0e01bf3ae4607dfa4ab44c175e
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
   jpa:
@@ -27,3 +27,12 @@ spring:
 server:
   session:
     timeout: 3600
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    password: h3Q1/vEmoZ+QvGb0Ix53wQ
+crypto:
+  api-var: ENC(8YMTaYiOC5A/VNjCylqMCyCjy3AggiYjSMv0TAuJNv0=)
+  algorithm: AES/ECB/PKCS5Padding
+mail-sender:
+  email: djun_igari@hotmail.com

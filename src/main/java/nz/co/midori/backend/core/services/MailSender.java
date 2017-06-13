@@ -2,6 +2,7 @@ package nz.co.midori.backend.core.services;
 
 import com.sendgrid.*;
 import nz.co.midori.frontend.model.ContactModel;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
