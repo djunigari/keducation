@@ -1,0 +1,30 @@
+{
+  "name": "keducation",
+  "scripts": {
+  },
+  "env": {
+    "CLEARDB_DATABASE_URL": {
+      "required": true
+    },
+    "SENDGRID_API_KEY": {
+      "required": true
+    },
+    "SENDGRID_PASSWORD": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "cleardb",
+    "sendgrid"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/java"
+    }
+  ]
+}
