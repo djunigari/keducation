@@ -45,11 +45,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/school">List of Schools</a></li>
-                    <li><a href="/agentLists">List of Agents</a></li>
-                    <li><a href="/">Keducation Awards</a></li>
+                    <li><a href="/school">Schools</a></li>
+                    <li><a href="/agentLists">Agents</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
