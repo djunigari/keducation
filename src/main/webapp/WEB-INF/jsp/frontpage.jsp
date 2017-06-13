@@ -114,7 +114,7 @@
             <div class="col-sm-4">
                 <a class="btn icon-btn btn-danger" href="#"><span class="glyphicon btn-glyphicon glyphicon-fire img-circle text-danger"></span>First</a>
                 <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h1>School Name</h1>
+                <h2>School Name</h2>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-success"></span>100%</a>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-star img-circle text-success"></span>5.0</a>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-user img-circle text-success"></span>10.000</a>
@@ -122,7 +122,7 @@
             <div class="col-sm-4">
                 <a class="btn icon-btn btn-info" href="#"><span class="glyphicon btn-glyphicon glyphicon-fire img-circle text-info"></span>Second</a>
                 <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h1>School Name</h1>
+                <h2>School Name</h2>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-success"></span>100%</a>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-star img-circle text-success"></span>5.0</a>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-user img-circle text-success"></span>10.000</a>
@@ -130,7 +130,7 @@
             <div class="col-sm-4">
                 <a class="btn icon-btn btn-default" href="#"><span class="glyphicon btn-glyphicon glyphicon-fire img-circle text-muted"></span>Third</a>
                 <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                <h1>School Name</h1>
+                <h2>School Name</h2>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-success"></span>100%</a>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-star img-circle text-success"></span>5.0</a>
                 <a class="btn icon-btn btn-success" href="#"><span class="glyphicon btn-glyphicon glyphicon-user img-circle text-success"></span>10.000</a>
