@@ -9,7 +9,7 @@
         <div class="col-xs-0 col-sm-6">
         </div>
         <div class="col-xs-12 col-sm-6 form-group">
-            <button type="submit" class="btn btn-success btn-block">Send</button>
+            <button type="submit" class="btn btn-primary btn-block">Send</button>
         </div>
     </div>
     <input type="hidden" name="lastName" value="${sessionScope.user.lastName}">

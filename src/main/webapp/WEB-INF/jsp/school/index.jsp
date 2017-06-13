@@ -17,8 +17,8 @@
                         <input class="form-control" type="text" name="school-name" placeholder="School Name" />
                     </div>
                     <div class="col-xs-12 col-sm-2 form-group">
-                        <button type="submit" class="btn btn-success">
-                            <i class="glyphicon glyphicon-search"></i>
+                        <button type="submit" class="btn btn-primary">
+                            Search
                         </button>
                     </div>
                 </div>

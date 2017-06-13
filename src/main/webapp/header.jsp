@@ -68,9 +68,3 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-
-
-
-<div align="center">
-    <img src="/images/main-logo.png" align="middle" />
-</div>
