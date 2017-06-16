@@ -1,10 +1,6 @@
 package nz.co.midori.frontend.security;
 
-import org.springframework.beans.factory.annotation.Value;
-
 public class Crypto{
-    @Value("${crypto.algorithm}")
-    public static final String ALGORITHM = "";
-    @Value("${crypto.api-var}")
-    public static final String KEY = "";
+    public static final String ALGORITHM = "AES/ECB/PKCS5Padding";
+    public static final String KEY = "8YMTaYiOC5A/VNjCylqMCyCjy3AggiYjSMv0TAuJNv0=";
 }

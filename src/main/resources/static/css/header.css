@@ -1,16 +1,3 @@
-.btn-primary {
-    background-image: linear-gradient(to bottom,#ddef34 0,#52be29 100%);
-}
-.btn-primary:hover {
-    background-color: #52be29;
-}
-.btn-primary:active:focus, .btn-primary.active:focus{
-    background: #7dcd2c;
-}
-.btn-primary:focus{
-    background-color: #52be29;
-}
-
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;

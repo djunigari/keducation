@@ -31,8 +31,16 @@ jasypt:
   encryptor:
     algorithm: PBEWithMD5AndDES
     password: h3Q1/vEmoZ+QvGb0Ix53wQ
-crypto:
-  api-var: ENC(8YMTaYiOC5A/VNjCylqMCyCjy3AggiYjSMv0TAuJNv0=)
-  algorithm: AES/ECB/PKCS5Padding
-mail-sender:
-  email: djun_igari@hotmail.com
+app:
+  crypto:
+    api-var: ENC(8YMTaYiOC5A/VNjCylqMCyCjy3AggiYjSMv0TAuJNv0=)
+    algorithm: AES/ECB/PKCS5Padding
+  mail-sender:
+    email: djun_igari@hotmail.com
+    noreply: noreply@keducation.com
+    api-key: ENC(8YMTaYiOC5A/VNjCylqMCyCjy3AggiYjSMv0TAuJNv0=)
+  user:
+    key:
+      activate: 89312
+      reset:
+        password: 312312

@@ -13,16 +13,18 @@ import java.util.logging.Logger;
  */
 @Service
 public class MailSender {
-    Logger log = Logger.getLogger("MailSender");
-    private static final String EMAIL = "djun.igari@gmail.com";
-    private static final Email FROM = new Email("noreply@keducation.com");
-    private static final String API_KEY = "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";
+    private Logger log = Logger.getLogger("MailSender");
+    @Value("${app.mail-sender.email")
+    private String EMAIL;
+    private Email from;
+    @Value("${app.mail-sender.api-key")
+    private String apiKey;
 
     public void sendMail(String email,String subject, String content){
         Email to = new Email(email);
-        Mail mail = new Mail(FROM, subject, to, new Content("text/html", content));
+        Mail mail = new Mail(from, subject, to, new Content("text/html", content));
 
-        SendGrid sg = new SendGrid(API_KEY);
+        SendGrid sg = new SendGrid(apiKey);
         Request request = new Request();
         try {
             request.method = Method.POST;
@@ -87,5 +89,10 @@ public class MailSender {
         sendMail(email,subject,content);
 
         log.info("Task: sendEmail, Result: Success, Email: "+email+", UserName: "+user);
+    }
+
+    @Value("${app.mail-sender.email.noreply")
+    public void setFrom(String email){
+        from = new Email(email);
     }
 }
