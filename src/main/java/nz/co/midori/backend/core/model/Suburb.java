@@ -8,7 +8,11 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "SUBURB")
+@NamedQueries({
+        @NamedQuery(name = Suburb.FIND_ALL, query = "From Suburb s"),
+})
 public class Suburb implements Serializable{
+    public static final String FIND_ALL = "Suburb.findAll";
     @Id
     @GeneratedValue
     @Column(name = "SUBURB_ID")

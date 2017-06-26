@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Set;
 
 /**
  * Created by djunigari on 8/05/17.
@@ -23,11 +24,9 @@ import java.util.Calendar;
 public class User implements Serializable{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID")
     private long userId;
-    @Column(name = "TOKEN")
-    private String token;
     @Email
     @NotNull
     @NotEmpty
@@ -42,17 +41,13 @@ public class User implements Serializable{
     @Size(min=6, max = 32)
     @Column(name = "PASSWORD")
     @ColumnTransformer(
-            read="AES_DECRYPT(UNHEX(password), UNHEX(SHA2('"+Crypto.KEY+"', 512)))",
+            read="AES_DECRYPT(UNHEX(password), UNHEX(SHA2('"+ Crypto.KEY+"', 512)))",
             write="HEX(AES_ENCRYPT(?, UNHEX(SHA2('"+Crypto.KEY+"', 512))))")
     private String password;
     @Transient
     private String passwordConfirmation;
-    @NotNull
-    @NotEmpty
     @Column(name = "FIRST_NAME")
     private String firstName;
-    @NotNull
-    @NotEmpty
     @Column(name = "LAST_NAME")
     private String lastName;
     @Temporal(TemporalType.DATE)
@@ -63,8 +58,6 @@ public class User implements Serializable{
     private String gender;
     @Column(name = "PHONE")
     private String phone;
-    @NotNull
-    @NotEmpty
     @Column(name = "MOBILE")
     private String mobile;
     @Column(name = "ADDRESS")
@@ -73,9 +66,9 @@ public class User implements Serializable{
     private String country;
     @Column(name = "ACTIVATED")
     private boolean activated;
-    @Column(name = "role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private UserRole role = UserRole.Normal;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<UserRole> roles;
 
     public long getUserId() {
         return userId;
@@ -83,14 +76,6 @@ public class User implements Serializable{
 
     public void setUserId(long userId) {
         this.userId = userId;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getEmail() {
@@ -197,19 +182,18 @@ public class User implements Serializable{
         this.activated = activated;
     }
 
-    public UserRole getRole() {
-        return role;
+    public Set<UserRole> getRoles() {
+        return roles;
     }
 
-    public void setRole(UserRole role) {
-        this.role = role;
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", token='" + token + '\'' +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
@@ -222,7 +206,6 @@ public class User implements Serializable{
                 ", address='" + address + '\'' +
                 ", country='" + country + '\'' +
                 ", activated=" + activated +
-                ", role=" + role +
                 '}';
     }
 }

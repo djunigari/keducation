@@ -35,7 +35,7 @@ public class FacebookUser extends User{
 
     @Override
     public String getUserName() {
-        return getFirstName()+" "+getLastName();
+        return super.getUserName();
     }
 
     @Override

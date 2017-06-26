@@ -7,7 +7,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "TERRITORIAL_AUTHORITY")
+@NamedQueries({
+        @NamedQuery(name = TerritorialAuthority.FIND_ALL, query = "From TerritorialAuthority t"),
+})
 public class TerritorialAuthority {
+    public static final String FIND_ALL = "TerritorialAuthority.findAll";
     @Id
     @GeneratedValue
     @Column(name = "TERRITORIAL_AUTHORITY_ID")

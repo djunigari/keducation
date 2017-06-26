@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
@@ -45,24 +47,25 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="/school">Schools</a></li>
-                    <li><a href="/agentLists">Agents</a></li>
+                    <li><a href="/schools">Schools</a></li>
+                    <li><a href="/agents">Agents</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <c:if test="${empty sessionScope.user.userName}">
+                <sec:authentication var="user" property="principal" />
+                    <c:if test="${user['class'].simpleName ne 'CustomUserDetails'}">
                         <li><p class="navbar-text">Already have an account?</p></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                             <ul id="login-dp" class="dropdown-menu">
                                 <li>
-                                    <jsp:include page="/WEB-INF/jsp/login/fragments/login-fragment.jsp"></jsp:include>
+                                    <jsp:include page="/WEB-INF/jsp/public/login/fragments/login-fragment.jsp"></jsp:include>
                                 </li>
                             </ul>
                         </li>
                     </c:if>
-                    <c:if test="${not empty sessionScope.user.userName}">
-                        <jsp:include page="/WEB-INF/jsp/login/fragments/login-menu-fragment.jsp"></jsp:include>
+                    <c:if test="${user['class'].simpleName eq 'CustomUserDetails'}">2
+                        <jsp:include page="/WEB-INF/jsp/public/login/fragments/login-menu-fragment.jsp"></jsp:include>
                     </c:if>
                  </ul>
             </div><!-- /.navbar-collapse -->

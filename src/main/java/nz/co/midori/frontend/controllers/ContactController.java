@@ -17,7 +17,7 @@ public class ContactController {
 
     @GetMapping("/contact")
     public String contactPage(){
-        return "/contact/index";
+        return "/public/contact/index";
     }
 
     @PostMapping("/contact")

@@ -1,5 +1,6 @@
 package nz.co.midori.backend.core.repositories;
 
+import nz.co.midori.backend.core.model.RegionalCouncil;
 import nz.co.midori.backend.core.model.School;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,10 @@ import java.util.List;
 public class SchoolRepository {
     @PersistenceContext
     private EntityManager em;
+
+    public void create(School school) {
+        em.persist(school);
+    }
 
     public List<School> findBySchoolName(String schoolName, int first, int pageSize){
         return em.createNamedQuery(School.FIND_BY_SCHOOL_NAME, School.class)
@@ -49,6 +54,18 @@ public class SchoolRepository {
                 .setFirstResult(first)
                 .setMaxResults(pageSize)
                 .getResultList();
+    }
+
+    public School findByRegionAndSchoolName(RegionalCouncil region, String schoolName) {
+        List<School> list = em.createNamedQuery(School.FIND_BY_REGION_ID_AND_SCHOOL_NAME, School.class)
+                .setParameter("regionId", region.getRegionalCouncilId())
+                .setParameter("schoolName", schoolName)
+                .setMaxResults(1)
+                .getResultList();
+        if(list.size() == 0){
+            return null;
+        }
+        return list.get(0);
     }
 
     public long countByRegionAndSchoolName(String region, String schoolName) {

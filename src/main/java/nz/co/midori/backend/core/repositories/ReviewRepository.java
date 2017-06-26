@@ -27,7 +27,7 @@ public class ReviewRepository {
         return em.merge(review);
     }
 
-    public Review findBySchoolAndUser(School school,User user){
+    public Review findBySchoolAndUser(School school, User user){
         List<Review> list = em.createNamedQuery(Review.FIND_BY_SCHOOL_AND_USER, Review.class)
                 .setParameter("userId", user.getUserId())
                 .setParameter("schoolId", school.getSchoolId())

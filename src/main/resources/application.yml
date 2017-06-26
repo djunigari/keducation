@@ -1,8 +1,8 @@
 spring:
   social:
     facebook:
-      appId: 477872509238452
-      appSecret: a24adf0e01bf3ae4607dfa4ab44c175e
+      appId: ENC(H45rpEm6yVcg+rFcIKQY68sgpo2ARdd2)
+      appSecret: ENC(ke+cd6vYe7qY9daJKApt/4mBh9UIzweH+t780n3MDJsqKmYiJa7zng0qAfnueVt0)
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
   jpa:
@@ -17,9 +17,7 @@ spring:
         max_statements: 50
         idle_test_period: 3000
   datasource:
-    url: jdbc:mysql://bed8118f1581ec:37bd28cb@us-cdbr-iron-east-03.cleardb.net/heroku_ac5f7d314de0b58?reconnect=true&useUnicode=true&characterEncoding=utf-8
-    username: bed8118f1581ec
-    password: 37bd28cb
+    url: ${CLEARDB_DATABASE_URL:}
   mvc:
     view:
       prefix: /WEB-INF/jsp/
@@ -29,18 +27,17 @@ server:
     timeout: 3600
 jasypt:
   encryptor:
-    algorithm: PBEWithMD5AndDES
-    password: h3Q1/vEmoZ+QvGb0Ix53wQ
+    algorithm: ${JASYPT_ENCRYPTOR_ALGORITHM:}
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 app:
-  crypto:
-    api-var: ENC(8YMTaYiOC5A/VNjCylqMCyCjy3AggiYjSMv0TAuJNv0=)
-    algorithm: AES/ECB/PKCS5Padding
-  mail-sender:
+  security:
+    crypto:
+      key_user_id: ENC(UdYSZhA7aPtf9BhNizz0yLKT2zka11kJ)
+      key_activate_user: ENC(zZWGUw7V3gzKk1wMBrKk0w==)
+      key_reset_password_user: ENC(mkw244IcryYPA9iTCw46hQ==)
+    login:
+      session.user: user
+  sender-mail:
     email: djun_igari@hotmail.com
-    noreply: noreply@keducation.com
-    api-key: ENC(8YMTaYiOC5A/VNjCylqMCyCjy3AggiYjSMv0TAuJNv0=)
-  user:
-    key:
-      activate: 89312
-      reset:
-        password: 312312
+    noreply-email: noreply@keducation.com
+    api-key: ENC(4V1HOOX7rcY1NidY99NqDmXnzEiBgTjymoLPSpgBdMRBzcbHoNCekNGN4h18G6wIqrKC1mYWr6bMUQcNEJii38xqDNNE3m3OicPbSVDEgjg=)

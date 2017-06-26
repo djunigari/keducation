@@ -8,7 +8,11 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "CATEGORY_SCHOOL")
+@NamedQueries({
+        @NamedQuery(name = CategorySchool.FIND_ALL, query = "From CategorySchool c"),
+})
 public class CategorySchool implements Serializable{
+    public static final String FIND_ALL = "CategorySchool.findAll";
     @Id
     @GeneratedValue
     @Column(name = "CATEGORY_SCHOOL_ID")

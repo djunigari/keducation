@@ -18,6 +18,7 @@ import java.io.Serializable;
         @NamedQuery(name = School.FIND_BY_REGION, query = "From School s where s.regionalCouncil.name = :region"),
         @NamedQuery(name = School.COUNT_BY_REGION_AND_SCHOOL_NAME, query = "Select count(s) From School s where s.regionalCouncil.name = :region and s.name LIKE :schoolName"),
         @NamedQuery(name = School.FIND_BY_REGION_AND_SCHOOL_NAME, query = "From School s where s.regionalCouncil.name = :region and s.name LIKE :schoolName"),
+        @NamedQuery(name = School.FIND_BY_REGION_ID_AND_SCHOOL_NAME, query = "From School s where s.regionalCouncil.regionalCouncilId = :regionId and s.name LIKE :schoolName"),
 })
 public class School implements Serializable {
     public static final String FIND_BY_SCHOOL_NAME = "School.findBySchoolName";
@@ -29,6 +30,7 @@ public class School implements Serializable {
     public static final String COUNT_BY_REGION = "School.countByRegion";
     public static final String COUNT_BY_REGION_AND_SCHOOL_NAME = "School.countByRegionAndSchoolName";
     public static final String COUNT_BY_SCHOOL_NAME = "School.countBySchoolName";
+    public static final String FIND_BY_REGION_ID_AND_SCHOOL_NAME = "School.countByRegionIdAndSchoolName";
     @Id
     @GeneratedValue
     @Column(name = "SCHOOL_ID")
@@ -49,7 +51,7 @@ public class School implements Serializable {
     private CategorySchool  categorySchool;
     @Column(name = "FUNDING_TYPE", nullable = false)
     @Enumerated(EnumType.STRING)
-    private FundingType fundingType;
+    private FundingType fundingType = FundingType.FUNDED;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "AUTHORITY_SCHOOL_ID")
     private AuthoritySchool authoritySchool;
@@ -65,7 +67,7 @@ public class School implements Serializable {
     private TerritorialAuthority territorialAuthority;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "REGIONAL_COUNCIL_ID")
-    private RegionalCouncil regionalCouncil;
+    private RegionalCouncil regionalCouncil = new RegionalCouncil();
     @Column(name = "POSTAL_ADDRESS_1")
     private String postAddress1;
     @Column(name = "POSTAL_ADDRESS_2")

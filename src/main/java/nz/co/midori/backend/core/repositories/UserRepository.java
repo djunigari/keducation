@@ -19,6 +19,10 @@ public class UserRepository {
     @PersistenceContext
     private EntityManager em;
 
+    public User find(long id){
+        return em.find(User.class,id);
+    }
+
     public void createFacebookUser(FacebookUser user){
         user.setActivated(true);
         em.persist(user);
@@ -37,17 +41,6 @@ public class UserRepository {
     public ApplicationUser findUserByUserName(String userName){
         List<ApplicationUser> list = em.createNamedQuery(ApplicationUser.FIND_BY_USER_NAME, ApplicationUser.class)
                 .setParameter("userName", userName)
-                .setMaxResults(1)
-                .getResultList();
-        if(list.size() == 0){
-            return null;
-        }
-        return list.get(0);
-    }
-
-    public ApplicationUser findByToken(String token){
-        List<ApplicationUser> list = em.createNamedQuery(ApplicationUser.FIND_BY_TOKEN, ApplicationUser.class)
-                .setParameter("token", token)
                 .setMaxResults(1)
                 .getResultList();
         if(list.size() == 0){

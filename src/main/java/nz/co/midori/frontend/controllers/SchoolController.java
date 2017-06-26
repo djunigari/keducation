@@ -7,7 +7,11 @@ import nz.co.midori.frontend.configs.ApplicationAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -24,6 +28,47 @@ public class SchoolController {
     private ApplicationAttributes appAttributes;
 
     @GetMapping("/school")
+    public String schoolShortInforPage(Model model){
+        model.addAttribute("regions",appAttributes.getRegions());
+        return "/public/school/index";
+    }
+
+    @PostMapping("/school")
+    public String registerSchoolShortInfo(Model model, School school, BindingResult result){
+        model.addAttribute("regions",appAttributes.getRegions());
+        if(repository.findByRegionAndSchoolName(school.getRegionalCouncil(),school.getName().trim()) != null){
+            result.addError(new FieldError("school","name","School existent"));
+        }
+        if(result.hasErrors()) {
+            return "/public/school/index";
+        }
+        repository.create(school);
+        return "redirect:/school/"+school.getSchoolId()+"/reviews";
+    }
+
+    @GetMapping("/school/{id}")
+    public String getSchool(
+            @PathVariable("id") long schoolId,
+            Model model){
+        if(schoolId > 0) {
+            School school = repository.findBySchoolId(schoolId);
+            if (school == null) {
+                return "/public/error/404";
+            }
+            model.addAttribute("school", school);
+        }
+        model.addAttribute("suburbs",appAttributes.getSuburbs());
+        model.addAttribute("authorities",appAttributes.getAuthoritySchools());
+        model.addAttribute("categories",appAttributes.getCategorySchools());
+        model.addAttribute("typeSchoolList",appAttributes.getTypeSchools());
+        model.addAttribute("fundingTypeList",appAttributes.getFundingTypes());
+        model.addAttribute("regions",appAttributes.getRegions());
+        model.addAttribute("territorialAuthorityList",appAttributes.getTerritorialAuthorities());
+        return "/authenticated/school/index";
+    }
+
+
+    @GetMapping("/schools")
     public String getSchools(Model model,
                              @RequestParam(value="region", required=false) String region,
                              @RequestParam(value="school-name", required=false) String schoolName,
@@ -48,7 +93,7 @@ public class SchoolController {
             count = repository.countAll();
         }
         long totalPages = (count/pageSize)+1;
-        StringBuilder href = new StringBuilder("/school?region=").append(region == null ? "" : region)
+        StringBuilder href = new StringBuilder("/schools?region=").append(region == null ? "" : region)
                 .append("&school-name=").append(schoolName == null ? "" : schoolName)
                 .append("&page=");
 
@@ -58,7 +103,7 @@ public class SchoolController {
         model.addAttribute("currentPage",page);
         model.addAttribute("regions",regions);
         model.addAttribute("schools", list);
-        return "/school/index";
+        return "/public/school/school-list";
     }
     public boolean isEmpty(String val){
         return val == null || val.isEmpty();

@@ -12,4 +12,11 @@ public enum FundingType {
 
     private String name;
 
+    public String getName(){
+        return this.name;
+    }
+
+    public String getValue(){
+        return this.name();
+    }
 }

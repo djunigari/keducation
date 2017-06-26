@@ -17,6 +17,6 @@ public class WellcomeController {
     @GetMapping("/")
     public String wellcomePage(Model model){
         model.addAttribute("regions", appAttributes.getRegions());
-        return "/frontpage";
+        return "/public/frontpage";
     }
 }
