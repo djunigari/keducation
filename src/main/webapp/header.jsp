@@ -64,7 +64,7 @@
                             </ul>
                         </li>
                     </c:if>
-                    <c:if test="${user['class'].simpleName eq 'CustomUserDetails'}">2
+                    <c:if test="${user['class'].simpleName eq 'CustomUserDetails'}">
                         <jsp:include page="/WEB-INF/jsp/public/login/fragments/login-menu-fragment.jsp"></jsp:include>
                     </c:if>
                  </ul>

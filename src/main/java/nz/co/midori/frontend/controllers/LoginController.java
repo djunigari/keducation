@@ -2,6 +2,7 @@ package nz.co.midori.frontend.controllers;
 
 import nz.co.midori.backend.core.repositories.UserRepository;
 import nz.co.midori.backend.core.services.UserAuthentication;
+import nz.co.midori.frontend.model.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -26,10 +27,12 @@ public class LoginController {
 
     @GetMapping("/login")
     public String loginPage(HttpSession session){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(auth != null) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(principal instanceof CustomUserDetails) {
             return "redirect:/";
         }
+
         return "/public/login/index";
     }
 

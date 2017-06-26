@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                         .loginPage("/login")
                         .permitAll()
-                    .failureUrl("/login-error")
+                    .failureUrl("/login")
                 .and()
                     .rememberMe()
                     .tokenRepository(persistentTokenRepository())

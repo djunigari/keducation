@@ -22,3 +22,12 @@ Select distinct(city) from schoollists where city != '' order by city;
 
 delete from school;
 ALTER TABLE school AUTO_INCREMENT = 1;
+
+
+SET @@auto_increment_increment=1;
+
+insert into user_role (name) values ('Admin');
+insert into user_role (name) values ('Student');
+insert into user_role (name) values ('Normal');
+
+select * from user_role;

@@ -16,7 +16,7 @@ public class MailSender {
     Logger log = Logger.getLogger("MailSender");
     @Value("${app.sender-mail.email}")
     private String EMAIL;
-    private Email FROM;
+    private static Email FROM;
     @Value("${app.sender-mail.api-key}")
     private String API_KEY;
 
@@ -91,7 +91,7 @@ public class MailSender {
         log.info("Task: sendEmail, Result: Success, Email: "+email+", UserName: "+user);
     }
 
-    @Value("${app.sender-mail.noreply-email")
+    @Value("${app.sender-mail.noreply-email}")
     public void setFrom(String email){
         this.FROM = new Email(email);
     }
