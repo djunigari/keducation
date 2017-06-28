@@ -23,7 +23,7 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                     <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
-                <div class="help-block text-right"><a href="/forgotten-password">Forget the password ?</a></div>
+                <div class="help-block text-right"><a href="/user?action=forgotten-password">Forget the password ?</a></div>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Sign in</button>

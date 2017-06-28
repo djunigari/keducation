@@ -35,8 +35,6 @@ app:
       key_user_id: ENC(UdYSZhA7aPtf9BhNizz0yLKT2zka11kJ)
       key_activate_user: ENC(zZWGUw7V3gzKk1wMBrKk0w==)
       key_reset_password_user: ENC(mkw244IcryYPA9iTCw46hQ==)
-    login:
-      session.user: user
   sender-mail:
     email: djun_igari@hotmail.com
     noreply-email: noreply@keducation.com
