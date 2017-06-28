@@ -27,11 +27,6 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID")
     private long userId;
-    @Email
-    @NotNull
-    @NotEmpty
-    @Column(name = "EMAIL", unique = true)
-    private String email;
     @NotNull
     @NotEmpty
     @Column(name = "USER_NAME", unique = true)
@@ -76,14 +71,6 @@ public class User implements Serializable{
 
     public void setUserId(long userId) {
         this.userId = userId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getUserName() {
@@ -194,7 +181,6 @@ public class User implements Serializable{
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +

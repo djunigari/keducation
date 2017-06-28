@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
-import static nz.co.midori.backend.core.converters.FacebookProfileToFacebookUserConverter.generateString;
-
+import static nz.co.midori.backend.core.utils.StringUtil.generateString;
 
 /**
  * Created by alexandreigari on 21/06/17.
@@ -45,7 +44,6 @@ public class FacebookConnectionSignup implements ConnectionSignUp {
         user.setUserName(connection.getDisplayName());
         user.setFacebookId(connection.fetchUserProfile().getId());
         user.setLink(connection.getProfileUrl());
-        user.setEmail(connection.fetchUserProfile().getId()+"@facebook.com.br");
         user.setPassword(generateString(8));
         UserRole role = roleRepository.findByName(UserRoleType.Normal.toString());
         Set<UserRole> roles = new HashSet<>();

@@ -4,7 +4,6 @@ import nz.co.midori.backend.core.model.ApplicationUser;
 import nz.co.midori.backend.core.model.School;
 import nz.co.midori.backend.core.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -25,13 +24,13 @@ public class ApplicationUserValidator implements Validator {
         ApplicationUser user = (ApplicationUser)o;
 
         if(repository.finUserByEmail(user.getEmail()) != null){
-            errors.rejectValue("email","E-mail existent");
+            errors.rejectValue("email","message.user.email.exist");
         }
         if(repository.findUserByUserName(user.getUserName()) != null){
-            errors.rejectValue("userName","Username existent");
+            errors.rejectValue("userName","message.user.userName.exist");
         }
         if(!user.getPasswordConfirmation().equals(user.getPassword())){
-            errors.rejectValue("passwordConfirmation","Confirm Password is different");
+            errors.rejectValue("passwordConfirmation","message.user.passwordConfirmation.different");
         }
     }
 }
