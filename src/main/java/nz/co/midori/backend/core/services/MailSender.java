@@ -14,10 +14,13 @@ import java.util.logging.Logger;
  */
 @Service
 public class MailSender {
+    private static Email FROM;
+
     Logger log = Logger.getLogger("MailSender");
     @Value("${app.sender-mail.email}")
     private String EMAIL;
-    private static Email FROM;
+    @Value("${app.domain}")
+    private String DOMAIN;
     @Value("${app.sender-mail.api-key}")
     private String API_KEY;
 
@@ -65,7 +68,7 @@ public class MailSender {
                         "<br><br>" +
                         "You have registered with Keducation, and now please verify your Keducation account by clicking the link below:" +
                         "<br><br>"+
-                        "<a href=\"http://www.keducation.co.nz/user/"+ user.getUserId() +"/activate?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a>" +
+                        "<a href=\""+ DOMAIN +"/user/"+ user.getUserId() +"/activate?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a>" +
                         "<br><br>" +
                         "Thank you and we are looking forward to having your say!" +
                         "<br><br>" +
@@ -84,7 +87,7 @@ public class MailSender {
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>\n" +
                 "<br>\n" +
                 "[Visit the URL below to reset your password]<br>\n" +
-                "<a href=\"http://www.keducation.co.nz/user/"+user.getUserId()+"/reset-password?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a><br>\n" +
+                "<a href=\""+ DOMAIN +"/user/"+user.getUserId()+"/reset-password?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a><br>\n" +
                 "<br>\n" +
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>";
         sendMail(user.getEmail(),subject,content);

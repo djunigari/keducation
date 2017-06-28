@@ -30,6 +30,7 @@ jasypt:
     algorithm: ${JASYPT_ENCRYPTOR_ALGORITHM:}
     password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 app:
+  domain: https://keducation.herokuapp.com
   security:
     crypto:
       key_user_id: ENC(UdYSZhA7aPtf9BhNizz0yLKT2zka11kJ)
