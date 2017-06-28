@@ -77,19 +77,19 @@ public class MailSender {
         log.info("Task: sendEmail, Result: Success, Email: "+user.getEmail()+", user: "+user);
     }
 
-    public void forgettenPassword(String email, String user,String code) {
+    public void forgettenPassword(ApplicationUser user,String code) {
         String subject = "[My International Education] Reset Password Instructions";
         String content ="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>\n" +
                 "[My International Education] Reset Password Instructions<br>\n" +
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>\n" +
                 "<br>\n" +
                 "[Visit the URL below to reset your password]<br>\n" +
-                "<a href=\"http://www.keducation.co.nz/register/user/reset-password?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a><br>\n" +
+                "<a href=\"http://www.keducation.co.nz/user/"+user.getUserId()+"/reset-password?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a><br>\n" +
                 "<br>\n" +
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>";
-        sendMail(email,subject,content);
+        sendMail(user.getEmail(),subject,content);
 
-        log.info("Task: sendEmail, Result: Success, Email: "+email+", UserName: "+user);
+        log.info("Task: sendEmail, Result: Success, Email: "+user.getEmail()+", User: "+user);
     }
 
     @Value("${app.sender-mail.noreply-email}")

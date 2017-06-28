@@ -48,7 +48,7 @@ public class UserService {
         repository.createUser(user);
         String token = String.format("%x", new BigInteger(1, user.getEmail().getBytes("UTF-8")));
         token = token+"_"+getCodeToken(token,KEY_ACTIVATE_USE);
-        sender.authenticationEmail(user.getEmail(),user.getUserName(),token);
+        sender.authenticationEmail(user,token);
         log.info("Task: Create User, Result: Success, User:"+user.toString());
     }
 
@@ -67,7 +67,7 @@ public class UserService {
         }
         String token = String.format("%x", new BigInteger(1, user.getUserName().getBytes("UTF-8")));
         token = token+"_"+getCodeToken(token,KEY_RESET_PASSWORD_USER);
-        sender.forgettenPassword(user.getEmail(),user.getUserName(),token);
+        sender.forgettenPassword(user,token);
     }
 
 

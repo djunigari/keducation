@@ -81,7 +81,7 @@ public class UserController {
         throw new ForbiddenException();
     }
 
-    @GetMapping("/user/{id}/active")
+    @GetMapping("/user/{id}/activate")
     public ModelAndView getActivatePage(@PathVariable("id") long id,
                                         @RequestParam(value = "code",required = true) String code) throws UnsupportedEncodingException, DecoderException {
         authentication.activateUserAccount(id, code);
