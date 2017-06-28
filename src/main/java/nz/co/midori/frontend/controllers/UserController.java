@@ -83,7 +83,7 @@ public class UserController {
 
     @GetMapping("/user/{id}/active")
     public ModelAndView getActivatePage(@PathVariable("id") long id,
-                                        @RequestParam(value = "code",required = false) String code) throws UnsupportedEncodingException, DecoderException {
+                                        @RequestParam(value = "code",required = true) String code) throws UnsupportedEncodingException, DecoderException {
         authentication.activateUserAccount(id, code);
         return new ModelAndView("redirect:/login");
     }

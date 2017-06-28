@@ -1,6 +1,7 @@
 package nz.co.midori.backend.core.services;
 
 import com.sendgrid.*;
+import nz.co.midori.backend.core.model.ApplicationUser;
 import nz.co.midori.frontend.model.ContactModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -58,22 +59,22 @@ public class MailSender {
         log.info("Task: sendEmail, Result: Success, Email: "+EMAIL+", ContactModel="+contactModel);
     }
 
-    public void authenticationEmail(String email, String user, String code){
+    public void authenticationEmail(ApplicationUser user, String code){
         String subject = "[My International Education] Authentication Instructions";
         String content ="Hello and welcome to Keducation!" +
                         "<br><br>" +
                         "You have registered with Keducation, and now please verify your Keducation account by clicking the link below:" +
                         "<br><br>"+
-                        "<a href=\"http://www.keducation.co.nz/register/user/activate?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a>" +
+                        "<a href=\"http://www.keducation.co.nz/user/"+ user.getUserId() +"/activate?code="+code+"\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"LPlnk978850\" previewinformation=\"1\">www.keducation.co.nz</a>" +
                         "<br><br>" +
                         "Thank you and we are looking forward to having your say!" +
                         "<br><br>" +
                         "Best regards" +
                         "<br>"+
                         "<strong>Keducation Administration</strong>";
-        sendMail(email,subject,content);
+        sendMail(user.getEmail(),subject,content);
 
-        log.info("Task: sendEmail, Result: Success, Email: "+email+", UserName: "+user);
+        log.info("Task: sendEmail, Result: Success, Email: "+user.getEmail()+", user: "+user);
     }
 
     public void forgettenPassword(String email, String user,String code) {
