@@ -12,7 +12,7 @@
                         <h3><i class="fa fa-lock fa-4x"></i></h3>
                         <h2 class="text-center">Reset Password?</h2>
                         <div class="panel-body">
-                            <form role="form" method="post" action="/user/${id}/reset-password?code=${code}" >
+                            <form role="form" method="post" action="/private/user/${id}/reset-password?code=${code}" >
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <c:set var="passwordHasBindError"><form:errors path="resetPassword.password"/></c:set>

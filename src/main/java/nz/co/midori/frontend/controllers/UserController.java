@@ -118,8 +118,8 @@ public class UserController {
         return new ModelAndView( "/public/user/confirm-your-email","user",user);
     }
 
-    @PutMapping("/private/user/{id}/reset-password")
-    public String resetPassword(
+    @PostMapping("/private/user/{id}/reset-password")
+    public ModelAndView resetPassword(
             @PathVariable("id") long id,
             @RequestParam(value = "code", required = true)String code,
             @Valid ResetPassword resetPassword, BindingResult result){
@@ -128,10 +128,12 @@ public class UserController {
             result.addError(new FieldError("resetPassword","passwordConfirmation","Confirm Password is different"));
         }
         if(result.hasErrors()) {
-            return "/user/reset-password";
+            return new ModelAndView( "/public/user/reset-password")
+                    .addObject("id",id)
+                    .addObject("code",code);
         }
         service.resetPassword(id,code,resetPassword.getPassword());
-        return "redirect:/login";
+        return new ModelAndView("redirect:/login");
     }
 }
 

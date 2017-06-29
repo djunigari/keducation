@@ -65,7 +65,7 @@ public class UserService {
         if(user == null){
             throw new ResourceNotFoundException();
         }
-        String token = String.format("%x", new BigInteger(1, user.getUserName().getBytes("UTF-8")));
+        String token = String.format("%x", new BigInteger(1, user.getEmail().getBytes("UTF-8")));
         token = token+"_"+getCodeToken(token,KEY_RESET_PASSWORD_USER);
         sender.forgettenPassword(user,token);
     }
@@ -88,7 +88,7 @@ public class UserService {
     }
 
     public void resetPassword(long id, String code, String newPassword) {
-        User user = getUserByCode(code,KEY_ACTIVATE_USE);
+        User user = getUserByCode(code,KEY_RESET_PASSWORD_USER);
         if(user == null){
             throw new ResourceNotFoundException();
         }
