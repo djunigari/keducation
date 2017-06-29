@@ -75,7 +75,7 @@ public class UserController {
         if(principal instanceof CustomUserDetails) {
             if(((CustomUserDetails) principal).getUser().getUserId() == id || auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleType.Admin.toString()))){
                 User user = repository.find(id);
-                return new ModelAndView("/private/user/index","user",user);
+                return new ModelAndView("/authenticated/user/index","user",user);
             }
         }
         throw new ForbiddenException();

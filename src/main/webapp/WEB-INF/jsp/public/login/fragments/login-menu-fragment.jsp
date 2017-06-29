@@ -31,7 +31,12 @@
             </div>
         </li>
         <li class="divider navbar-login-session-bg"></li>
-        <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+        <c:set var="accountSettingsUrl" value="'#'" />
+        <c:if test="${customUser.user['class'].simpleName eq 'ApplicationUser'}">
+            <c:set var="accountSettingsUrl" value="/private/user/${customUser.user.userId}" />
+        </c:if>
+
+        <li><a href="${accountSettingsUrl}">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
         <li class="divider"></li>
         <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
         <li class="divider"></li>
