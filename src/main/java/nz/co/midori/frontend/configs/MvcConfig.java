@@ -25,6 +25,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(facebookDisconnectedInterceptor).addPathPatterns("/connect/facebook");
     }
 
+
+
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);

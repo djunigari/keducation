@@ -3,8 +3,6 @@ spring:
     facebook:
       appId: ENC(H45rpEm6yVcg+rFcIKQY68sgpo2ARdd2)
       appSecret: ENC(ke+cd6vYe7qY9daJKApt/4mBh9UIzweH+t780n3MDJsqKmYiJa7zng0qAfnueVt0)
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
   jpa:
     database: MYSQL
     show_sql: false
